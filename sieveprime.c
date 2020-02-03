@@ -105,7 +105,7 @@ void segmented_sieve(uint64_t limit)
     uint64vec_t multiples = create_uint64_vector(10);
     boolvec_t sieve = create_bool_vector(segment_size);
     boolvec_t is_prime = create_bool_vector(sqrtval + 1);
-    printf(" ");
+    printf("2 ");
     for (low = 0; low <= limit; low += segment_size)
     {
         memset(sieve.data, true, sizeof(bool) * sieve.size);
