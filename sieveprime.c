@@ -42,7 +42,7 @@ typedef struct bool_vector
     uint64_t size, count;
 } boolvec_t;
 
-// The Level 1 Data cache for the user's CPU (must be per thread)
+// The Level 1 Data cache for the user's CPU (must be per core)
 uint64_t L1D_CACHE;
 
 uint64vec_t create_uint64_vector(uint64_t size)
