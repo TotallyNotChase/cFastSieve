@@ -165,9 +165,9 @@ int main()
 {
     uint64_t N;
     printf("Enter your CPU's L1D_CACHE per thread (in bytes): ");
-    scanf_s("%" SCNu64, &L1D_CACHE);
+    scanf("%" SCNu64, &L1D_CACHE);
     printf("Enter upper limit for prime check: ");
-    scanf_s("%" SCNu64, &N);
+    scanf("%" SCNu64, &N);
     clock_t t0 = clock();
     segmented_sieve(N);
     clock_t t1 = clock();
