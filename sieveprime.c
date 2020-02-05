@@ -76,6 +76,17 @@ boolvec_t create_bool_vector(uint64_t size)
     return vector;
 }
 
+size_t approximate_size(uint64_t limit)
+{
+    int i;
+    float x = 1;
+    for (i = log10(limit); i > 0; i--)
+    {
+        x *= 2.4;
+    }
+    return x;
+}
+
 void uint64_vector_append(uint64vec_t *vector, uint64_t data)
 {
     // Appends values to uint64 vector, reallocates if necessary
@@ -98,11 +109,11 @@ void segmented_sieve(uint64_t limit)
     int count = 1;
     // A detailed explaination of this algo can be found in the wiki mentioned above
     int64_t low, high, i = 3, j, k, n = 3, s = 3;
-    size_t i_size;
+    size_t i_size, approx_arr_size = approximate_size(limit);
     uint64_t sqrtval = (uint64_t) sqrt(limit);
     uint64_t segment_size = sqrtval < L1D_CACHE ? L1D_CACHE : sqrtval;          // This is a imitation of std::max()
-    uint64vec_t prime_arr = create_uint64_vector(10);                           // Assuming the vectors to have 10 slots, no real formula to approximate exact amount
-    uint64vec_t multiples = create_uint64_vector(10);
+    uint64vec_t prime_arr = create_uint64_vector(approx_arr_size);              // An assumption on approx size
+    uint64vec_t multiples = create_uint64_vector(approx_arr_size);
     boolvec_t sieve = create_bool_vector(segment_size);
     boolvec_t is_prime = create_bool_vector(sqrtval + 1);
     printf("2 ");
