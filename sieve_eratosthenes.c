@@ -1,5 +1,5 @@
 /*
-* @file = sieveprime.c
+* @file = sieve_eratosthenes.c
 * @author = https://github.com/TotallyNotChase
 * @licence = public domain
 */
